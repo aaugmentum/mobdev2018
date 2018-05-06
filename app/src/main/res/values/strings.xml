@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Backsplash</string>
+    <string name="tab_featured">Featured</string>
+    <string name="tab_new">New</string>
+    <string name="download">Download</string>
+    <string name="wait_download">Please wait until download finishes</string>
+    <string name="permission_denied">Permission denied!</string>
+    <string name="saved">Saved!</string>
+</resources>
