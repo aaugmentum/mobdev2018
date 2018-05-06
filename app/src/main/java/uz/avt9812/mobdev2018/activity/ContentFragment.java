@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -121,13 +122,20 @@ public class ContentFragment extends Fragment implements Callback<List<Photo>>, 
 
             mProgressBar.setVisibility(View.GONE);
             mRefreshLayout.setRefreshing(false);
-//            Log.d(TAG, mData.get(0).toString());
         }
     }
 
     @Override
     public void onFailure(Call<List<Photo>> call, Throwable t) {
-        Toast.makeText(App.getContext(), "Unknown", Toast.LENGTH_SHORT).show();
+        mProgressBar.setVisibility(View.GONE);
+        mRefreshLayout.setRefreshing(false);
+
+        if (t.getClass() == UnknownHostException.class)
+            Toast.makeText(App.getContext(), R.string.no_internet_error, Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(App.getContext(), R.string.unknown_error, Toast.LENGTH_SHORT).show();
+
+        t.printStackTrace();
     }
 
     @Override
@@ -151,6 +159,7 @@ public class ContentFragment extends Fragment implements Callback<List<Photo>>, 
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
 
+            //Pagination, load more if in the end of the screen
             LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
             int visibleItemCount = layoutManager.getChildCount();
             int totalItemCount = layoutManager.getItemCount();
@@ -162,6 +171,7 @@ public class ContentFragment extends Fragment implements Callback<List<Photo>>, 
                         && totalItemCount >= API.PAGE_SIZE) {
                     mPageNumber++;
                     Log.i(TAG, String.valueOf(mPageNumber));
+                    mRefreshLayout.setRefreshing(true);
                     getPhotos(mPageNumber);
                 }
             }

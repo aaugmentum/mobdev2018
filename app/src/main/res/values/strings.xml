@@ -6,4 +6,7 @@
     <string name="wait_download">Please wait until download finishes</string>
     <string name="permission_denied">Permission denied!</string>
     <string name="saved">Saved!</string>
+    <string name="no_internet_error">Check your internet connection…</string>
+    <string name="unknown_error">Unknown Error!</string>
+
 </resources>

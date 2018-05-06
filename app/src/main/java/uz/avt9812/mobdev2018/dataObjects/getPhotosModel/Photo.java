@@ -18,15 +18,15 @@ public class Photo {
     @SerializedName("updated_at")
     private String updatedAt;
 
-    private Integer width;
-    private Integer height;
+    private int width;
+    private int height;
     private Urls urls;
 
     @SerializedName("likes")
-    private Integer likesCount;
+    private int likesCount;
 
     @SerializedName("sponsored")
-    private Boolean isSponsored;
+    private boolean isSponsored;
 
     private String color;
 
@@ -62,7 +62,7 @@ public class Photo {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getWidth() {
+    public int getWidth() {
         return width;
     }
 
@@ -70,7 +70,7 @@ public class Photo {
         this.width = width;
     }
 
-    public Integer getHeight() {
+    public int getHeight() {
         return height;
     }
 
@@ -86,7 +86,7 @@ public class Photo {
         this.urls = urls;
     }
 
-    public Integer getLikesCount() {
+    public int getLikesCount() {
         return likesCount;
     }
 
@@ -94,7 +94,7 @@ public class Photo {
         this.likesCount = likesCount;
     }
 
-    public Boolean getSponsored() {
+    public boolean getSponsored() {
         return isSponsored;
     }
 

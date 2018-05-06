@@ -19,11 +19,11 @@ public class App extends Application {
 
     private static API sUnsplashApi;
     private static Gson sGson;
+    private static Context sContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i("INFO: ", "App opened!");
         sGson = new GsonBuilder().create();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -32,6 +32,8 @@ public class App extends Application {
                 .build();
 
         sUnsplashApi = retrofit.create(API.class);
+
+        sContext = getApplicationContext();
     }
 
     public static API getApi() {
@@ -43,6 +45,6 @@ public class App extends Application {
     }
 
     public static Context getContext() {
-        return getContext();
+        return sContext;
     }
 }

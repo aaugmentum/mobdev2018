@@ -12,8 +12,6 @@ import android.widget.RelativeLayout;
 public class ImageViewResizer {
     private float mDisplayWidth;
     private DisplayMetrics mDisplayMetrics;
-    private final String TAG = "IVResizer";
-
 
     public ImageViewResizer(Context context) {
         this.mDisplayMetrics = context.getResources().getDisplayMetrics();
@@ -21,6 +19,7 @@ public class ImageViewResizer {
     }
 
     public void resizeImageView(ImageView iv, Integer height, Integer width) {
+        //Resize Image view according to the ratio of a image based on screen width
         float ratio = (height*1.0f) / width;
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams((int) mDisplayWidth, (int) (mDisplayWidth *ratio));
         iv.setLayoutParams(lp);

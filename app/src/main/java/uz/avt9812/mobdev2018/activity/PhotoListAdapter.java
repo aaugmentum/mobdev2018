@@ -1,6 +1,5 @@
 package uz.avt9812.mobdev2018.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -28,9 +27,6 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
     private ImageViewResizer mIvResizer;
     private RequestOptions mRequestOptions;
     private ColorDrawable mColorDrawable;
-
-    private final String TAG = "PhotoListAdapter";
-
 
     PhotoListAdapter(ArrayList<Photo> data, Context context) {
         this.mData = data;
@@ -73,8 +69,9 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
                 Intent intent = new Intent(mContext, ViewImageActivity.class);
 
 
-                intent.putExtra("url", item.getUrls().getRaw());
-                intent.putExtra("name", item.getId());
+                intent.putExtra(ViewImageActivity.URL, item.getUrls().getRaw());
+                intent.putExtra(ViewImageActivity.NAME, item.getId());
+
                 mContext.startActivity(intent);
             }
         });
@@ -90,12 +87,6 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
     public int getItemCount() {
         return mData.size();
     }
-
-    public Photo getItem(int position) {
-        return mData.get(position);
-    }
-
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {

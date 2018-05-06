@@ -16,7 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Created by azama on 5/5/2018.
+ * Created by azamat on 5/5/2018.
  */
 
 public class DrawableSaver implements ActivityCompat.OnRequestPermissionsResultCallback {
@@ -30,7 +30,7 @@ public class DrawableSaver implements ActivityCompat.OnRequestPermissionsResultC
     }
 
     public void saveDrawable (final Drawable drawable, final String fileName) {
-
+        //Saving file in another thread
         Runnable saveFileTask = new Runnable() {
             @Override
             public void run() {
