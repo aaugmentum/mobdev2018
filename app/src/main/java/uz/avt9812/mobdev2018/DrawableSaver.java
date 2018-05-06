@@ -35,13 +35,15 @@ public class DrawableSaver implements ActivityCompat.OnRequestPermissionsResultC
             @Override
             public void run() {
                 Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
-                String path = Environment.getExternalStorageDirectory() + File.separator + "Backsplash";
-                File file = new File(path, fileName + ".png");
+                String path = Environment.getExternalStorageDirectory() + File.separator + "backsplash";
+                File file = new File(path);
                 FileOutputStream fos;
                 try {
                     if (!file.exists()) {
-                        file.createNewFile();
                         file.mkdir();
+                        file = new File(path, fileName + ".png");
+                        if (!file.exists())
+                            file.createNewFile();
                     }
 
                     fos = new FileOutputStream(file);
